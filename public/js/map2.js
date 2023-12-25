@@ -6,7 +6,6 @@ attribution: '© OpenStreetMap contributors'
 }).addTo(map);
 }
 harita_olustur();
-// Popup içeriğini oluşturan HTML
 
 // renkler
 const renkler = ['Red', 'Blue', 'Green', 'Yellow', 'Purple', 'Orange', 'Pink', 'Brown', 'Cyan', 'Magenta'];
@@ -168,9 +167,10 @@ function hat_ekle() {
   const veri = {
     hat_num: hat_num,
     hat_adi: hat_adi,
-    baslangic:baslangic,
+    baslangic: baslangic,
     bitis: bitis
   };
+
   // API'ye POST isteği gönder
   fetch('/api/hat_kaydet', {
     method: 'POST',
@@ -181,8 +181,11 @@ function hat_ekle() {
   })
     .then(response => response.json())
     .then(data => {
-      console.log(data.message);
-      alert("Hat Eklendi")
+      if (data.error) {
+        alert('Hata: ' + data.error); // Hata durumunda uyarı göster
+      } else if (data.success) {
+        alert(data.message); // Başarılı durumunda uyarı göster
+      }
     })
     .catch(error => console.error('Hata:', error));
 }

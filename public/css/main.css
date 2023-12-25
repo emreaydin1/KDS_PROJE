@@ -74,8 +74,18 @@ body{
     margin-top: 10px;
 }
 
-
+.kart{
+    width: 300px;
+    height: 100px;
+    display: flex;
+    position: absolute;
+    margin-left: 100px;
+    gap: 10px;
+    text-align: center;
+}
 /* YENİ ÖZELLİKLER */
+
+
 .navigation{
     position: fixed;
     inset: 5px;
