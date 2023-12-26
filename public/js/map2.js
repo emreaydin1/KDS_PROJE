@@ -8,7 +8,7 @@ attribution: '© OpenStreetMap contributors'
 harita_olustur();
 
 // renkler
-const renkler = ['Red', 'Blue', 'Green', 'Yellow', 'Purple', 'Orange', 'Pink', 'Brown', 'Cyan', 'Magenta'];
+const renkler = ['Red', 'Blue', 'Green', 'Yellow', 'Purple', 'Orange', 'Black', 'Brown', 'Cyan', 'Magenta'];
 
 function haritayiGoster() {
   const randomIndex = Math.floor(Math.random() * renkler.length);
@@ -211,5 +211,61 @@ function hat_durak() {
       console.log(data.message);
     })
     .catch(error => console.error('Hata:', error));
+}
+
+function izban_getir(){
+  var izban_icon = L.icon({
+    iconUrl: '/img/izban.png',
+    iconSize: [40, 23],  // İkon boyutu
+    iconAnchor: [16, 32],  // İkon anker noktası
+    popupAnchor: [0, -32]  // Popup'ın konumu
+  });
+  
+  fetch('api/izban_getir')
+  .then(response => response.json())
+  .then(data => {
+    // JSON verisinde dolaşarak her bir koordinat için işaretçi ekleyin
+    data.forEach(izban_istasyon => {
+      const marker = L.marker([izban_istasyon.iz_enlem, izban_istasyon.iz_boylam],{icon:izban_icon}).addTo(map);
+      marker.bindPopup(izban_istasyon.iz_adi);
+        
+        // JSON verisinde dolaşarak polyline oluşturun
+      const coordinates = data.map(izban_istasyon => [izban_istasyon.iz_enlem, izban_istasyon.iz_boylam]);
+      const polyline = L.polyline(coordinates, {
+        color: 'black',
+        weight: 8,
+        opacity:0,
+        height:8
+      }).addTo(map);
+      });
+    });
+}
+
+function metro_getir(){
+  var izban_icon = L.icon({
+    iconUrl: '/img/izban.png',
+    iconSize: [40, 23],  // İkon boyutu
+    iconAnchor: [16, 32],  // İkon anker noktası
+    popupAnchor: [0, -32]  // Popup'ın konumu
+  });
+  
+  fetch('api/metro_izban')
+  .then(response => response.json())
+  .then(data => {
+    // JSON verisinde dolaşarak her bir koordinat için işaretçi ekleyin
+    data.forEach(izban_istasyon => {
+      const marker = L.marker([metro_istasyon.enlem, metro_istasyon.boylam],{icon:izban_icon}).addTo(map);
+      marker.bindPopup(izban_istasyon.iz_adi);
+        
+        // JSON verisinde dolaşarak polyline oluşturun
+      const coordinates = data.map(izban_istasyon => [izban_istasyon.iz_enlem, izban_istasyon.iz_boylam]);
+      const polyline = L.polyline(coordinates, {
+        color: 'black',
+        weight: 8,
+        opacity:0,
+        height:8
+      }).addTo(map);
+      });
+    });
 }
 

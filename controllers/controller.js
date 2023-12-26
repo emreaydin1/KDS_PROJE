@@ -172,6 +172,31 @@ const durak_sayisi = (callback) => {
 })
 };
 
+const izban_getir=(req,res)=>{
+  const sql = `SELECT * FROM izban_istasyon`;
+  dbConn.query(sql,(err, results) => {
+      if (err) {
+        console.error('MySQL sorgusu hatası: ' + err);
+        res.status(500).send('Internal Server Error');
+        return;
+      }
+      res.json(results);
+    });
+  }
+
+const metro_getir=(req,res)=>{
+  const sql = `SELECT * FROM metro_istasyon`;
+  dbConn.query(sql,(err, results) => {
+      if (err) {
+        console.error('MySQL sorgusu hatası: ' + err);
+        res.status(500).send('Internal Server Error');
+        return;
+      }
+      res.json(results);
+    });
+  }
 
 
-module.exports={konum_getir,durak_getir,durakKaydet,tum_guzergah,hat_kaydet,hat_durak,durak_sil,durak_sayisi}
+
+module.exports={konum_getir,durak_getir,durakKaydet,
+tum_guzergah,hat_kaydet,hat_durak,durak_sil,durak_sayisi,izban_getir,metro_getir}
