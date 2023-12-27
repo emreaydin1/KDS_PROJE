@@ -4,7 +4,7 @@ require('dotenv/config');
 const router=require('./routers')
 const bodyParser = require('body-parser');
 const dbConn = require("./db/mysql_connect");
-const { durak_sayisi } = require("./controllers/controller");
+const { durak_sayisi,sefer_getir} = require("./controllers/controller");
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -27,11 +27,11 @@ app.get("/harita", (req, res) => {
 //grafik
 app.get("/sefer", (req, res) => {
     res.render("sefer.ejs");
-});
+    
+})
 
 // Sunucuyu başlat
 app.use('/api',router)
 app.listen(process.env.PORT, () => {
     console.log(`Server is running at http://localhost:${process.env.PORT}`);
 });
-

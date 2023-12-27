@@ -1,21 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/css/main.css" rel="stylesheet" media="screen">
-    <title>Sidebar Menu</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Anasayfa</title>
 
 </head>
-<body>
 
-    <div class="grafik">
-        <canvas id="myPieChart" width="400" height="400"></canvas>
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <script src="/js/grafik.js"></script>
-    </div>
+<body>
+    <div class="acilir_tablo">
+        <h2>Açılır Tablo Örneği</h2>
+
+        <form>
+            <label for="tables">Tablo Seçin:</label>
+            <select id="tables" onchange="showTable()">
+                <option value="table1">Tablo 1</option>
+                <option value="table2">Tablo 2</option>
+                <option value="table3">Tablo 3</option>
+            </select>
     
+            <table id="table1">
+                <!-- Tablo 1 içeriği -->
+                <tr>
+                    <td>1. Satır, 1. Hücre</td>
+                    <td>1. Satır, 2. Hücre</td>
+                </tr>
+                <tr>
+                    <td>2. Satır, 1. Hücre</td>
+                    <td>2. Satır, 2. Hücre</td>
+                </tr>
+            </table>
+    
+            <table id="table2">
+                <!-- Tablo 2 içeriği -->
+                <tr>
+                    <td>A</td>
+                    <td>B</td>
+                </tr>
+                <tr>
+                    <td>C</td>
+                    <td>D</td>
+                </tr>
+            </table>
+    
+            <table id="table3">
+                <!-- Tablo 3 içeriği -->
+                <tr>
+                    <td>X</td>
+                    <td>Y</td>
+                </tr>
+                <tr>
+                    <td>Z</td>
+                    <td>W</td>
+                </tr>
+            </table>
+        </form>
+    </div>
     <div class="navigation">
         <div class="toggle"></div>
         <ul>
@@ -33,9 +78,9 @@
                 </a>
             </li>
             <li>
-                <a href="grafik">
-                    <span class="icon"><ion-icon name="chatbubble-outline"></ion-icon></span>
-                    <span class="title">Grafikler</span>
+                <a href="sefer">
+                    <span class="icon"><ion-icon name="timer"></ion-icon></span>
+                    <span class="title">Sefer Saatleri</span>
                 </a>
             </li>
             <li>
@@ -63,18 +108,30 @@
                 </a>
             </li>
         </ul>
-        
+
     </div>
+    <script>
+        function showTable() {
+            var selectedTable = document.getElementById("tables").value;
+            var tables = document.querySelectorAll("table");
+
+            tables.forEach(function(table) {
+                table.style.display = "none";
+            });
+
+            document.getElementById(selectedTable).style.display = "table";
+        }
+    </script>
     <script src="app.js"></script>
-    <script src="/js/grafik.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script>
         let navigation = document.querySelector('.navigation');
         let toggle = document.querySelector('.toggle');
-        toggle.onclick = function(){
+        toggle.onclick = function () {
             navigation.classList.toggle('active')
         }
     </script>
 </body>
+
 </html>

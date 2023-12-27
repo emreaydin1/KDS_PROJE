@@ -1,26 +1,38 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
-*{
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Ubuntu', sans-serif;
 }
 
-body{
+body {
     min-height: 100vh;
     background: #365fa1;
 }
 
 /* YENİ ÖZELLİKLER */
-.grafik{
+.grafik {
     width: 500px;
     float: right;
 }
-#map{
+
+#map {
     height: 585px;
     width: 1000px;
-    float:right;
+    float: right;
     display: grid;
+}
+
+.btn {
+    display: flex;
+    flex-direction: column;
+    background-color: gray;
+    width: 100px;
+    margin-left: 130px;
+    border-radius: 20px;
+    margin-top: 10px;
 }
 
 .buton {
@@ -41,30 +53,13 @@ body{
     width: 100px;
     margin-left: 130px;
     border-radius: 20px;
-  }
+}
 
-.buton button:hover{
+.buton button:hover {
     background-color: #a5a05c;
 }
-.ara{
-    display: flex;
-    flex-direction: column;
-    background-color: gray;
-    width: 100px;
-    margin-left: 130px;
-    border-radius: 20px;
-}
 
-.hat_ekle{
-    display: flex;
-    flex-direction: column;
-    background-color: gray;
-    width: 100px;
-    margin-left: 130px;
-    border-radius: 20px;
-    margin-top: 10px;
-}
-.durak_ekle{
+.ara {
     display: flex;
     flex-direction: column;
     background-color: gray;
@@ -74,7 +69,27 @@ body{
     margin-top: 10px;
 }
 
-.kart{
+.hat_ekle {
+    display: flex;
+    flex-direction: column;
+    background-color: gray;
+    width: 100px;
+    margin-left: 130px;
+    border-radius: 20px;
+    margin-top: 10px;
+}
+
+.durak_ekle {
+    display: flex;
+    flex-direction: column;
+    background-color: gray;
+    width: 100px;
+    margin-left: 130px;
+    border-radius: 20px;
+    margin-top: 10px;
+}
+
+.kart {
     width: 300px;
     height: 100px;
     display: flex;
@@ -83,10 +98,118 @@ body{
     gap: 10px;
     text-align: center;
 }
-/* YENİ ÖZELLİKLER */
+
+.sefer-content {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s; /* Animasyonlu geçiş */
+}
+
+.sefer-form {
+    margin-bottom: 20px;
+}
+
+.sefer-label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.sefer-input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+.sefer-button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.sefer-button:hover {
+    background-color: #0056b3;
+}
+
+.sefer-tablo {
+    max-height: 300px; /* veya istediğiniz başka bir değer */
+    overflow-y: auto;
+}
+
+.sefer-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.sefer-th, .sefer-td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.sefer-th {
+    background-color: #f2f2f2;
+}
+
+.sefer-action-buttons button {
+    margin-right: 5px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.sefer-action-buttons button:hover {
+    background-color: #218838;
+}
+
+.sefer-action-buttons button.delete {
+    background-color: #dc3545;
+}
+
+.sefer-action-buttons button.delete:hover {
+    background-color: #c82333;
+}
+
+/* Büyütme ve küçültme düğmeleri */
+.zoom-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.zoom-buttons button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: none; /* Başlangıçta gizli */
+}
+
+.zoom-buttons button:hover {
+    background-color: #0056b3;
+}
+
+/* Sadece "Büyüt" butonunu göster */
+.zoom-buttons button.zoom-in {
+    display: inline-block;
+}
+/*YENİ ÖZELLİKLER */
 
 
-.navigation{
+.navigation {
     position: fixed;
     inset: 5px;
     background: #287bff;
@@ -98,12 +221,12 @@ body{
     transition: 0.5s;
 }
 
-.navigation.active{
+.navigation.active {
     width: 200px;
     border-radius: 20px;
 }
 
-.toggle{
+.toggle {
     position: absolute;
     bottom: 15px;
     right: 15px;
@@ -117,7 +240,8 @@ body{
     justify-content: center;
     align-items: center;
 }
-.toggle::before{
+
+.toggle::before {
     content: '';
     position: absolute;
     width: 26px;
@@ -128,7 +252,7 @@ body{
     transition: 1s;
 }
 
-.toggle::after{
+.toggle::after {
     content: '';
     position: absolute;
     width: 26px;
@@ -139,22 +263,22 @@ body{
     transition: 1s;
 }
 
-.navigation.active .toggle::before{
+.navigation.active .toggle::before {
     transform: translateY(0px) rotate(-405deg);
 }
 
-.navigation.active .toggle::after{
+.navigation.active .toggle::after {
     transform: translateY(0px) rotate(225deg);
 }
 
-.navigation ul{
+.navigation ul {
     position: absolute;
     top: 50px;
     left: 0;
     width: 100%;
 }
 
-.navigation ul li{
+.navigation ul li {
     position: relative;
     list-style: none;
     width: 100%;
@@ -165,10 +289,11 @@ body{
     /*background: #fff;*/
 }
 
-.navigation ul li:hover{
+.navigation ul li:hover {
     background: #fff;
     color: #222;
 }
+
 /*
 .navigation ul li:nth-child(1){
     top: 20px;
@@ -176,7 +301,7 @@ body{
     background: none;
 }
 */
-.navigation ul li:hover::before{
+.navigation ul li:hover::before {
     content: '';
     position: absolute;
     top: -20px;
@@ -188,7 +313,7 @@ body{
     box-shadow: 7.5px 7.5px 0 7.5px #fff;
 }
 
-.navigation ul li:hover::after{
+.navigation ul li:hover::after {
     content: '';
     position: absolute;
     bottom: -20px;
@@ -200,7 +325,7 @@ body{
     box-shadow: 7.5px -7.5px 0 7.5px #fff;
 }
 
-.navigation ul li a{
+.navigation ul li a {
     position: relative;
     display: block;
     width: 100%;
@@ -209,11 +334,11 @@ body{
     color: black;
 }
 
-.navigation ul li:hover a{
+.navigation ul li:hover a {
     color: #365fa1;
 }
 
-.navigation ul li a .icon{
+.navigation ul li a .icon {
     position: relative;
     display: block;
     min-width: 60px;
@@ -222,11 +347,11 @@ body{
     text-align: center;
 }
 
-.navigation ul li a .icon icon-icon{
+.navigation ul li a .icon icon-icon {
     font-size: 1.75rem;
 }
 
-.navigation ul li a .title{
+.navigation ul li a .title {
     position: relative;
     display: block;
     padding: 0 10px;
@@ -235,4 +360,3 @@ body{
     text-align: start;
     white-space: nowrap;
 }
-
