@@ -126,6 +126,7 @@ const tum_guzergah=(req,res)=>{
     });
 }
 
+
 const durak_sil=(req,res)=>{
   const markerId = req.params.markerId;
 
@@ -145,32 +146,57 @@ const durak_sil=(req,res)=>{
       return res.status(404).json({ message: 'Marker bulunamadı.' });
     }
 
-    res.json({ message: 'Marker başarıyla silindi.' });
+    res.json({ message: 'Durak başarıyla silindi.' });
   });
 }
 
 const durak_sayisi = (callback) => {
-  const sql1 = "SELECT COUNT(*) as yeni_hat_sayisi from otobus_hatlari WHERE hat_adi LIKE '%(Y)%'";
-  const sql="SELECT COUNT(*) as yeni_durak_sayisi from duraklar WHERE durak_adi LIKE '%(P)%'";
-  dbConn.query(sql, (err, result) => {
+  const sqlDurak = "SELECT COUNT(*) as yeni_hat_sayisi FROM otobus_hatlari WHERE hat_adi LIKE '%(Y)%'";
+  const sqlHat = "SELECT COUNT(*) as yeni_durak_sayisi FROM duraklar WHERE durak_adi LIKE '%(P)%'";
+  const sqlAktifBus = "SELECT COUNT(*) as aktif_bus FROM araclar WHERE durum = 0";
+  const toplam_bus="SELECT COUNT(*) as toplam_otobus from araclar"
+
+  dbConn.query(sqlHat, (err, resultDurak) => {
+    if (err) {
+      console.error('MySQL sorgusu hatası (Hat): ' + err);
+      callback(0);
+      return;
+    }
+
+    dbConn.query(sqlDurak, (err, resultHat) => {
       if (err) {
-          console.error('MySQL sorgusu hatası: ' + err);
-          callback(0);
-          return;
+        console.error('MySQL sorgusu hatası (Durak): ' + err);
+        callback(0);
+        return;
       }
-  dbConn.query(sql1, (err, result2) => {
+
+    dbConn.query(sqlAktifBus, (err, result3) => {
       if (err) {
-          console.error('MySQL sorgusu hatası: ' + err);
-          callback(0);
-          return;
-        }
-      const yeni_hat=result2[0].yeni_hat_sayisi;
-      const yeni_durak = result[0].yeni_durak_sayisi;
-      const veriler=[yeni_durak,yeni_hat]
+        console.error('MySQL sorgusu hatası (Durak): ' + err);
+        callback(0);
+        return;
+      }
+    dbConn.query(toplam_bus, (err, result4) => {
+      if (err) {
+        console.error('MySQL sorgusu hatası (Durak): ' + err);
+        callback(0);
+        return;
+      }      
+      const yeniHat = resultHat[0].yeni_hat_sayisi;
+      const yeniDurak = resultDurak[0].yeni_durak_sayisi;
+      const aktif_bus=result3[0].aktif_bus
+      const toplam_bus=result4[0].toplam_otobus
+
+      const veriler = [yeniDurak, yeniHat,aktif_bus,toplam_bus];
       callback(veriler);
+    })
+    })
+    });
   });
-})
 };
+
+
+
 
 const izban_getir=(req,res)=>{
   const sql = `SELECT * FROM izban_istasyon`;

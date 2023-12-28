@@ -8,75 +8,48 @@
     <link href="/css/main.css" rel="stylesheet" media="screen">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Anasayfa</title>
+    <title>Seferler</title>
 </head>
 
 <body>
     <div class="sefer-content" id="seferContent">
+        <h5>Sefer Saatleri</h5>
         <div class="sefer-form">
             <form id="searchForm">
-                <label class="sefer-label" for="hatNo">Sefer Ara:</label>
+                <h6>Sefer Ara</h6>
+                <label class="sefer-label" for="hatNo"></label>
                 <input class="sefer-input" type="text" id="hatNo" name="hatNo" placeholder="Hat No" required>
                 <button class="sefer-button" type="button" onclick="searchSeferSaatleri()">Ara</button>
             </form>
         </div>
         <div class="sefer-form">
             <form id="addSeferForm">
+                <h6>Sefer Saati Ekle</h6>
                 <input class="sefer-input" type="text" id="hatNoAdd" name="hatNoAdd" placeholder="Hat No" required>
                 <input class="sefer-input" type="text" id="gidisSaat" name="gidisSaat" placeholder="Gidiş Saati" required>
                 <input class="sefer-input" type="text" id="donusSaat" name="donusSaat" placeholder="Dönüş Saati" required>
                 <button class="sefer-button" type="button" onclick="addSeferSaat()">Ekle</button>
             </form>
         </div>
+        <table class="sefer-baslik">
+            <thead>
+                <tr>
+                    <td class="sefer-th">Hat No</td>
+                    <td class="sefer-th">Gidiş Saati</td>
+                    <td class="sefer-th">Dönüş Saati</td>
+                    <td class="sefer-th">İşlemler</td>
+                </tr>
+            </thead>
+        </table>
         <div class="sefer-tablo">
             <table class="sefer-table">
-                <thead>
-                    <tr>
-                        <th class="sefer-th">Hat No</th>
-                        <th class="sefer-th">Gidiş Saati</th>
-                        <th class="sefer-th">Dönüş Saati</th>
-                        <th class="sefer-th">İşlemler</th>
-                    </tr>
-                </thead>
+
                 <tbody id="seferSaatleriBody">
                     <!-- Tablo içeriği buraya eklenecek -->
                 </tbody>
             </table>
         </div>
-        <div class="zoom-buttons">
-            <button class="zoom-in" onclick="zoomIn()"><h2>+</h2></button>
-            <button class="zoom-out" onclick="zoomOut()"><h2>-</h2></button>
-        </div>
     </div>
-
-    <script>
-       
-        var zoomLevel = 1;
-        updateZoom();
-
-        function zoomIn() {
-            zoomLevel += 0.1;
-            updateZoom();
-        }
-
-        function zoomOut() {
-            zoomLevel -= 0.1;
-            updateZoom();
-        }
-
-        function updateZoom() {
-            document.getElementById('seferContent').style.transform = 'scale(' + zoomLevel + ')';
-            // Büyüt butonunu gizle, küçült butonunu göster
-            if (zoomLevel >1) {
-                document.querySelector('.zoom-in').style.display = 'none';
-                document.querySelector('.zoom-out').style.display = 'inline-block';
-            } else {
-                // Küçült butonunu gizle, büyüt butonunu göster
-                document.querySelector('.zoom-out').style.display = 'none';
-                document.querySelector('.zoom-in').style.display = 'inline-block';
-            }
-        }
-    </script>
     <div class="navigation">
         <div class="toggle"></div>
         <ul>

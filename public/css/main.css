@@ -13,80 +13,109 @@ body {
 }
 
 /* YENİ ÖZELLİKLER */
-.grafik {
-    width: 500px;
-    float: right;
-}
 
 #map {
     height: 585px;
     width: 1000px;
     float: right;
-    display: grid;
 }
 
 .btn {
     display: flex;
     flex-direction: column;
-    background-color: gray;
     width: 100px;
     margin-left: 130px;
-    border-radius: 20px;
     margin-top: 10px;
+    gap: 3px;
 }
 
-.buton {
-    display: grid;
-    flex-direction: column;
-}
 
-.buton button {
-    padding: 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    margin-bottom: 5px;
-    cursor: pointer;
-    width: 100px;
-    margin-left: 130px;
-    border-radius: 20px;
-}
-
-.buton button:hover {
-    background-color: #a5a05c;
-}
-
-.ara {
+/* .ara {
     display: flex;
     flex-direction: column;
-    background-color: gray;
     width: 100px;
     margin-left: 130px;
-    border-radius: 20px;
     margin-top: 10px;
+    gap: 3px;
 }
 
 .hat_ekle {
     display: flex;
     flex-direction: column;
-    background-color: gray;
     width: 100px;
     margin-left: 130px;
-    border-radius: 20px;
     margin-top: 10px;
+    gap: 3px;
 }
 
 .durak_ekle {
     display: flex;
     flex-direction: column;
-    background-color: gray;
     width: 100px;
     margin-left: 130px;
-    border-radius: 20px;
     margin-top: 10px;
+    gap: 3px;
+} */
+/* Buton div'i stil ayarları */
+.btn {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    width: 100px;
+    margin-left: 130px;
+    margin-top: 10px;
+}
+
+/* Ara div'i stil ayarları */
+.ara {
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+    margin-left: 130px;
+    margin-top: 10px;
+}
+
+/* Hat ekle div'i stil ayarları */
+.hat_ekle {
+    display: flex;
+    flex-direction: column;
+    flex-direction: column;
+    width: 100px;
+    margin-left: 130px;
+    margin-top: 10px;
+}
+
+/* Durak ekle div'i stil ayarları */
+.durak_ekle {
+    display: flex;
+    flex-direction: column;
+    flex-direction: column;
+    width: 100px;
+    margin-left: 130px;
+    margin-top: 10px;
+}
+
+/* Input stil ayarları */
+input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+/* Button stil ayarları */
+.mapBtn{
+    padding: 5px 9px;
+    cursor: pointer;
+    background-color:	lightslategray;
+    /* Buton rengi */
+    color: #fff;
+    /* Buton metin rengi */
+    border: 2px solid #585151c6;;
+    border-radius: 3px;
+}
+.mapBtn:hover {
+    background-color: #335730; /* Hover rengi */
+    border-color: #1b572d; /* Hover'da kenar çizgisi rengi */
 }
 
 .kart {
@@ -100,13 +129,19 @@ body {
 }
 
 .sefer-content {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    border: 1px solid #ddd;
+    background-color: gray;
+    width: 500px;
+    height: 500px;
+    margin: 15px auto;
+    padding: 10px;
+    border: 2px solid #ab9a9a;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s; /* Animasyonlu geçiş */
+    transition: transform 0.3s;
+    /* Animasyonlu geçiş */
+}
+.sefer-content h5{
+    text-align: center;
 }
 
 .sefer-form {
@@ -119,7 +154,7 @@ body {
 }
 
 .sefer-input {
-    width: 100%;
+    width: 100px;
     padding: 8px;
     margin-bottom: 10px;
     box-sizing: border-box;
@@ -139,20 +174,44 @@ body {
 }
 
 .sefer-tablo {
-    max-height: 300px; /* veya istediğiniz başka bir değer */
+    max-height: 210px;
+    /* veya istediğiniz başka bir değer */
     overflow-y: auto;
 }
 
 .sefer-table {
     width: 100%;
     border-collapse: collapse;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.sefer-table tbody tr,
+td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-collapse: collapse;
+    text-align: left;
+    width: 50px;
+}
+
+.sefer-table tbody:first-child {
+    width: 80px;
+    background-color: #001b867a;
+}
+
+.sefer-baslik {
+    width: 100%;
+    border-collapse: collapse;
     margin-top: 20px;
 }
 
-.sefer-th, .sefer-td {
+.sefer-th,
+.sefer-td {
     border: 1px solid #ddd;
     padding: 10px;
     text-align: left;
+    width: 50px;
 }
 
 .sefer-th {
@@ -180,32 +239,14 @@ body {
 .sefer-action-buttons button.delete:hover {
     background-color: #c82333;
 }
+.graph{
+    width: 50%; /* Tablonun genişliğini istediğiniz gibi ayarlayabilirsiniz */
+    height:50%; /* Tablonun yüksekliğini istediğiniz gibi ayarlayabilirsiniz */
+    border: 1px solid #ddd; /* İsteğe bağlı: Tablo kenarlığı */
+    margin-left: 100px;
+    padding-top: 100px;
+  }
 
-/* Büyütme ve küçültme düğmeleri */
-.zoom-buttons {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-}
-
-.zoom-buttons button {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    display: none; /* Başlangıçta gizli */
-}
-
-.zoom-buttons button:hover {
-    background-color: #0056b3;
-}
-
-/* Sadece "Büyüt" butonunu göster */
-.zoom-buttons button.zoom-in {
-    display: inline-block;
-}
 /*YENİ ÖZELLİKLER */
 
 

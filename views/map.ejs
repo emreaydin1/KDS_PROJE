@@ -13,35 +13,31 @@
 </head>
 <body>
     <div id="map"></div>
-    <div class="buton">       
-        <!-- <button onclick="joinPoints()">Birleştir</button>
-        <button onclick="clearMap()">Temizle</button>
-        <button onclick="fetchMarkers()">Getir</button>
-        <button onclick="izban_getir()">İzban Hattı</button>
-        <button onclick="tum_hatlar()">Tüm Hatlar</button>
-        <label for="hatNo">Hat No:</label>  -->
-    </div>
     <div class="btn">
-        <button onclick="metro_getir()">Metro Hattı</button>
-        <button onclick="izban_getir()">İzban Hattı</button>
+        <button class="mapBtn" onclick="metro_getir()">Metro Hattı</button>
+        <button class="mapBtn" onclick="izban_getir()">İzban Hattı</button>
+        <button class="mapBtn" onclick="tum_hatlar()">Tüm Hatlar</button>
     </div>
     <div class="ara">
+        <h5>Hat Ara</h5>
         <input type="number" id="hatNo"  min="0" max="1000"  name="hatNo" placeholder="Hat Numarası">
-        <button onclick="haritayiGoster()">Hat Ara</button>   
+        <button class="mapBtn" onclick="haritayiGoster()">Hat Ara</button>   
     </div>
     <div class="hat_ekle">
+        <h5>Hat Ekle</h5>
         <input type="number" id="hat_num" placeholder="Hat No">
         <input type="text" id="hat_adi" placeholder="Hat İsmi">
         <input type="text" id="baslangic" placeholder="Başlangıç">
         <input type="text" id="bitis" placeholder="Bitiş">
-        <button onclick="hat_ekle()">Yeni Hat Ekle</button>
+        <button class="mapBtn" onclick="hat_ekle()">Yeni Hat Ekle</button>
     </div>
     <div class="durak_ekle">
+        <h5>Durak Ekle</h5>
         <input type="number" id="hat_no" placeholder="Hat No">
         <input type="number" id="durak_id" placeholder="Durak ID">
         <input type="text" id="durak_adi" placeholder="Durak Adı">
-        <button onclick="noktaEkle()">Durak Ekle</button>
-        <button onclick="kaydet()">Kaydet</button>
+        <button class="mapBtn" onclick="noktaEkle()">Durak Ekle</button>
+        <button class="mapBtn" onclick="kaydet()">Kaydet</button>
     </div>
     <div class="navigation">
         <div class="toggle"></div>

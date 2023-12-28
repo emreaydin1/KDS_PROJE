@@ -1,14 +1,12 @@
 var map = L.map('map').setView([38.4192, 27.1287],11);
 // OpenStreetMap katmanını ekleyin
 function harita_olustur(){
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-attribution: '© OpenStreetMap contributors'
-}).addTo(map);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 }
 harita_olustur();
 
 // renkler
-const renkler = ['Red', 'Blue', 'Green', 'Yellow', 'Purple', 'Orange', 'Black', 'Brown', 'Cyan', 'Forest'];
+const renkler = ['Red', 'Blue', 'Green', 'Yellow', 'Orange', 'Black', 'Brown', 'Cyan', 'Forest'];
 
 function haritayiGoster() {
   const randomIndex = Math.floor(Math.random() * renkler.length);
@@ -47,17 +45,19 @@ function durakGetir() {
 }
 
 function silMarker(markerId) {
-  // TODO: Silme işlemini Node.js API'ye gönder
-  fetch('/api/sil_marker/:markerId', {
+  // Silinecek marker'ın ID'sini gönder
+  fetch(`/api/sil_marker/${markerId}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
     },
+    // Silme talebini JSON formatında gönder
     body: JSON.stringify({ markerId }),
   })
     .then(response => response.json())
     .then(data => {
       console.log(data.message);
+      alert(data.message)
       // Marker'ı haritadan kaldır
       map.eachLayer(layer => {
         if (layer instanceof L.Marker && layer.options.icon.options.iconUrl === '/img/eshot.png') {
@@ -71,6 +71,7 @@ function silMarker(markerId) {
     })
     .catch(error => console.error('Hata:', error));
 }
+
 
 var enlem;
 var boylam;
@@ -138,18 +139,6 @@ function kaydet() {
     hat_durak();
 }
 
-function tum_hatlar() {
-  const randomIndex = Math.floor(Math.random() * renkler.length);
-  fetch(`api/tum_guzergah`)
-    .then(response => response.json())
-    .then(veriler => {
-      // Çizgiyi temsil eden bir polyline oluştur
-      const polyline = L.polyline(veriler.map(konum => [konum.enlem, konum.boylam]), { color: renkler[randomIndex] }).addTo(map);
-      // Harita görünen alanı polyline'a sığacak şekilde ayarla
-      map.fitBounds(polyline.getBounds());
-    })
-    .catch(error => console.error('Hata:', error));
-}
 
 function hat_ekle() {
   hat_num = document.getElementById('hat_num').value;
@@ -251,3 +240,42 @@ function metro_getir(){
     });
 }
 
+function tum_hatlar() {
+  const randomIndex = Math.floor(Math.random() * renkler.length);
+  fetch(`api/tum_guzergah`)
+    .then(response => response.json())
+    .then(veriler => {
+      // Hat numarasına göre konumları grupla
+      const gruplanmisKonumlar = gruplaKonumlar(veriler);
+
+      // Gruplanmış konumlar üzerinde döngü yaparak çizgileri oluştur
+      gruplanmisKonumlar.forEach(grup => {
+        const polyline = L.polyline(grup.map(konum => [konum.enlem, konum.boylam]), { color: "purple" ,weight:5}).addTo(map);
+
+        // Çizgiye tıklandığında hat numarasını gösteren etiket ekle
+        polyline.on('click', function (event) {
+          const hatNo = grup[0].hat_no; // Hat numarasını ilk konumdan alabiliriz
+          const popup = L.popup().setLatLng(event.latlng).setContent(`Hat No: ${hatNo}`).openOn(map);
+        });
+
+        // Harita görünen alanı polyline'a sığacak şekilde ayarla
+        map.fitBounds(polyline.getBounds());
+      });
+    })
+    .catch(error => console.error('Hata:', error));
+}
+
+function gruplaKonumlar(veriler) {
+  const gruplar = {};
+  veriler.forEach(konum => {
+    const hatNo = konum.hat_no;
+
+    if (!gruplar[hatNo]) {
+      gruplar[hatNo] = [];
+    }
+
+    gruplar[hatNo].push(konum);
+  });
+
+  return Object.values(gruplar);
+}
