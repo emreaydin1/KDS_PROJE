@@ -95,8 +95,7 @@ body {
     margin-top: 10px;
 }
 
-/* Input stil ayarları */
-input {
+.map-input{
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 3px;
@@ -122,7 +121,7 @@ input {
     width: 300px;
     height: 100px;
     display: flex;
-    position: absolute;
+    position:relative;
     margin-left: 100px;
     gap: 10px;
     text-align: center;
@@ -130,7 +129,7 @@ input {
 
 .sefer-content {
     background-color: gray;
-    width: 500px;
+    width: 800px;
     height: 500px;
     margin: 15px auto;
     padding: 10px;
@@ -239,14 +238,30 @@ td {
 .sefer-action-buttons button.delete:hover {
     background-color: #c82333;
 }
+.graphs{
+    display: flex;
+}
 .graph{
-    width: 50%; /* Tablonun genişliğini istediğiniz gibi ayarlayabilirsiniz */
-    height:50%; /* Tablonun yüksekliğini istediğiniz gibi ayarlayabilirsiniz */
-    border: 1px solid #ddd; /* İsteğe bağlı: Tablo kenarlığı */
+    width: 550px; /* Tablonun genişliğini istediğiniz gibi ayarlayabilirsiniz */
+    height:350px; /* Tablonun yüksekliğini istediğiniz gibi ayarlayabilirsiniz */
+    border: 2px solid #000000; /* İsteğe bağlı: Tablo kenarlığı */
     margin-left: 100px;
-    padding-top: 100px;
+    margin-top: 50px;
   }
-
+.graph1{
+    width: 550px; /* Tablonun genişliğini istediğiniz gibi ayarlayabilirsiniz */
+    height:350px; /* Tablonun yüksekliğini istediğiniz gibi ayarlayabilirsiniz */
+    border: 2px solid #000000; /* İsteğe bağlı: Tablo kenarlığı */
+    margin-left:50px;
+    margin-top: 50px;
+  }
+.main-graphs{
+    display: inline;
+}
+.baslik{
+    text-align: center;
+    
+}
 /*YENİ ÖZELLİKLER */
 
 

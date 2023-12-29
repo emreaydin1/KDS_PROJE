@@ -126,7 +126,6 @@ const tum_guzergah=(req,res)=>{
     });
 }
 
-
 const durak_sil=(req,res)=>{
   const markerId = req.params.markerId;
 
@@ -195,9 +194,6 @@ const durak_sayisi = (callback) => {
   });
 };
 
-
-
-
 const izban_getir=(req,res)=>{
   const sql = `SELECT * FROM izban_istasyon`;
   dbConn.query(sql,(err, results) => {
@@ -221,7 +217,6 @@ const metro_getir=(req,res)=>{
       res.json(results);
     });
 } 
-
 
 const sefer_saat_getir = (req, res) => {
   const hatNo = req.params.hatNo;
@@ -298,7 +293,43 @@ const sefer_saat_guncelle = (req, res) => {
   });
 };
 
+const ger_otobus=(req,res)=>{
+  const hat_id=req.params.hat_id
+  const sql = `SELECT 
+  CASE 
+  WHEN sefer_sayisi BETWEEN 0 AND 10 THEN 1
+  WHEN sefer_sayisi BETWEEN 10 AND 20 THEN 2
+  WHEN sefer_sayisi BETWEEN 20 AND 30 THEN 4
+  WHEN sefer_sayisi BETWEEN 30 AND 40 THEN 6
+  WHEN sefer_sayisi BETWEEN 40 AND 50 THEN 7 
+  ELSE 10
+  END AS gereken_otobus_sayisi
+  FROM sefer_sayisi
+  WHERE hat_no = ?`;
+  dbConn.query(sql, [hat_id], (err, results) => {
+      if (err) {
+        console.error('MySQL sorgusu hatası: ' + err);
+        res.status(500).send('Internal Server Error');
+        return;
+      }
+      res.json(results);
+    });
+}
+const ger_durak=(req,res)=>{
+  const hat_id=req.params.hat_id
+  const sql = `SELECT durak_sayisi FROM durak_sayisi WHERE hat_no=?`;
+  dbConn.query(sql, [hat_id], (err, results) => {
+      if (err) {
+        console.error('MySQL sorgusu hatası: ' + err);
+        res.status(500).send('Internal Server Error');
+        return;
+      }
+      res.json(results);
+    });
+}
+
+
 
 module.exports={konum_getir,durak_getir,durakKaydet,
 tum_guzergah,hat_kaydet,hat_durak,durak_sil,durak_sayisi,izban_getir,
-metro_getir,sefer_saat_getir,sefer_saat_ekle,sefer_saat_sil,sefer_saat_guncelle}
+metro_getir,sefer_saat_getir,sefer_saat_ekle,sefer_saat_sil,sefer_saat_guncelle,ger_otobus,ger_durak}

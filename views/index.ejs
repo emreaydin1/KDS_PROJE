@@ -43,13 +43,28 @@
               <span class="info-box-number"><%=veriler[2]%></span>
             </div>
         </div>
-        
     </div>
-    <div class="graph">
-        <input type="number" id="hatNo"  min="0" max="1000"  name="hatNo" placeholder="Hat Numarası">
-        <button class="mapBtn" onclick="haritayiGoster()">Hat Ara</button>
-        <canvas id="myBarChart"></canvas>
-    </div>  
+    <div class="main-graphs">
+        <h4 class="baslik">Planlanan Hat Bilgileri</h4>
+        <div class="graphs">
+            <div class="graph">
+                <div class="graph-group">
+                    <input type="number" id="hat_id"  min="0" max="1000"  name="hatNo" placeholder="Hat No">
+                    <button class="graph-btn" onclick="ger_otobus()">&nbsp;<i class="fa-solid fa-chart-line"></i>Getir&nbsp;</button>            
+                </div>
+                <canvas id="myBarChart"></canvas>
+            </div>
+            <div class="graph1">
+                <div class="graph-group1">
+                    <input type="number" id="hat_id"  min="0" max="1000"  name="hatNo" placeholder="Hat No">
+                    <button class="graph-btn" onclick="ger_otobusB()">&nbsp;<i class="fa-solid fa-chart-line"></i>Getir&nbsp;</button>           
+                </div>
+                <canvas id="myBarChartB"></canvas>
+            </div>            
+        </div>
+ 
+    </div>
+ 
     <div class="navigation">
         <div class="toggle"></div>
         <ul>
@@ -74,24 +89,12 @@
             </li>
             <li>
                 <a href="#">
-                    <span class="icon"><ion-icon name="help-outline"></ion-icon></span>
-                    <span class="title">Help</span>
+                    <span class="icon"><ion-icon name="person-add"></ion-icon></span>
+                    <span class="title">Kullanıcılar</span>
                 </a>
             </li>
             <li>
-                <a href="#">
-                    <span class="icon"><ion-icon name="settings-outline"></ion-icon></span>
-                    <span class="title">Setting</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
-                    <span class="title">Password</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
+                <a href="/">
                     <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
                     <span class="title">Çıkış</span>
                 </a>

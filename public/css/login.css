@@ -1,0 +1,84 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: 'Libre Franklin', sans-serif;
+}
+
+.login-baslik{
+    width: 100px;
+
+}
+
+h1 {
+    /* font-weight: bold; */
+    margin: 0;
+    margin-bottom: 1rem;
+}
+
+.btn-grad {
+   margin: 10px;
+   padding: 15px 45px;
+   text-align: center;
+   text-transform: uppercase;
+   transition: 0.5s;
+   background-size: 200% auto;
+   color: white;
+   background-color: rgb(25, 25, 141);           
+   border-radius: 10px;
+   display: block;
+   cursor: pointer;
+   text-decoration: none;
+}
+.btn-grad:hover{
+    background-color:rgb(17, 17, 226) ;
+}
+
+
+form {
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 50px;
+    height: 100%;
+    text-align: center;
+}
+
+input {
+    background-color: #eee;
+    border: none;
+    padding: 12px 15px;
+    margin: 8px 0;
+    width: 100%;
+}
+
+/*  */
+.body-container{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #4568DC;
+
+}
+.container {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25), 0 5px 5px rgba(0, 0, 0, 0.22);
+    position: relative;
+    width: 500px;
+    min-height: 350px;
+    align-items: center;
+}
+.form-container {
+    position: relative;
+    margin-top: 50px;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}

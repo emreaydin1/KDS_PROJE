@@ -1,7 +1,7 @@
 const router=require('express').Router()
 const {konum_getir,durak_getir,durakKaydet,
 tum_guzergah,hat_kaydet,hat_durak,
-durak_sil,izban_getir,metro_getir,sefer_saat_getir,sefer_saat_ekle,sefer_saat_sil,sefer_saat_guncelle}=require('../controllers/controller')
+durak_sil,izban_getir,metro_getir,sefer_saat_getir,sefer_saat_ekle,sefer_saat_sil,sefer_saat_guncelle, ger_otobus, ger_durak}=require('../controllers/controller')
 
 router.get('/konum_getir/:hatNo',konum_getir)
 router.get('/durak_getir/:hatNo',durak_getir)
@@ -17,5 +17,8 @@ router.get('/sefer_saat_getir/:hatNo', sefer_saat_getir);
 router.post('/sefer_saat_ekle', sefer_saat_ekle);
 router.delete('/sefer_saat_sil/:seferId', sefer_saat_sil);
 router.put('/sefer_saat_guncelle/:seferId', sefer_saat_guncelle);
+
+router.get('/ger_otobus/:hat_id',ger_otobus)
+router.get('/ger_durak/:hat_id',ger_durak)
 
 module.exports=router

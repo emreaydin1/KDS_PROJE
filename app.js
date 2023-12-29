@@ -3,9 +3,7 @@ const app = express();
 require('dotenv/config');
 const router=require('./routers')
 const bodyParser = require('body-parser');
-const dbConn = require("./db/mysql_connect");
 const { durak_sayisi,sefer_getir} = require("./controllers/controller");
-
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -13,6 +11,11 @@ app.set("view engine","ejs");
 app.use(express.static('public'));
 app.use(express.static('node_modules'));
 app.use(express.static('views'));
+
+//login sayfası
+app.get("/", (req, res) => {
+    res.render("login.ejs");
+});
 
 // Ana sayfa
 app.get("/anasayfa", (req, res) => {
