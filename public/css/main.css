@@ -184,20 +184,18 @@ body {
     padding: 10px;
     border: 1px solid #ddd;
 }
+.sefer-table tbody td{
+    width: 45px;
+}
 
 .sefer-table tbody tr,
 td {
-    border: 1px solid #ddd;
+    border: 1px solid #000000;
     padding: 10px;
     border-collapse: collapse;
-    text-align: left;
-    width: 50px;
+    text-align: center;
 }
 
-.sefer-table tbody:first-child {
-    width: 80px;
-    background-color: #001b867a;
-}
 
 .sefer-baslik {
     width: 100%;
@@ -242,18 +240,18 @@ td {
     display: flex;
 }
 .graph{
-    width: 550px; /* Tablonun genişliğini istediğiniz gibi ayarlayabilirsiniz */
+    width: 560px; /* Tablonun genişliğini istediğiniz gibi ayarlayabilirsiniz */
     height:350px; /* Tablonun yüksekliğini istediğiniz gibi ayarlayabilirsiniz */
     border: 2px solid #000000; /* İsteğe bağlı: Tablo kenarlığı */
     margin-left: 100px;
-    margin-top: 50px;
+    margin-top: 40px;
   }
 .graph1{
-    width: 550px; /* Tablonun genişliğini istediğiniz gibi ayarlayabilirsiniz */
+    width: 560px; /* Tablonun genişliğini istediğiniz gibi ayarlayabilirsiniz */
     height:350px; /* Tablonun yüksekliğini istediğiniz gibi ayarlayabilirsiniz */
     border: 2px solid #000000; /* İsteğe bağlı: Tablo kenarlığı */
     margin-left:50px;
-    margin-top: 50px;
+    margin-top: 40px;
   }
 .main-graphs{
     display: inline;
@@ -262,6 +260,59 @@ td {
     text-align: center;
     
 }
+
+.hidden {
+    display: none;
+}
+
+#formContainer {
+    float:right;
+    background-color: gray;
+    width:250px;
+    height: 190px;;
+    border: 2px solid #ab9a9a;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+.kullanici{
+    display: grid;
+    background-color: blue;
+    float: right;
+    margin-right: 60px;
+    border-radius: 8px;
+}
+.kullanici button{
+    width: 250px;
+}
+#kaydetButton{
+    width: 60px;
+    background-color: #28a745;
+}
+
+.users{
+    width: 50%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin-left: 150px;
+}
+
+.kullanici-tablo{
+    margin-left: 150px;
+    border-collapse: collapse;
+}
+.kullanici-tablo tbody tr,
+td {
+    width: 50%;
+    margin-top: 20px;
+    margin-left: 150px;
+    width: 156px;
+}
+.kull-content table{
+    border-collapse: collapse;
+}
+
+
 /*YENİ ÖZELLİKLER */
 
 

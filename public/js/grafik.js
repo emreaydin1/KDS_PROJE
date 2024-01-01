@@ -12,8 +12,8 @@ function ger_otobus() {
 }
 
 function ger_otobusB() {
-  const hat_id = document.getElementById('hat_id').value;
-  fetch(`api/ger_otobus/${hat_id}`)
+  const hat_id = document.getElementById('hat_idB').value;
+  fetch(`api/ger_otobusB/${hat_id}`)
     .then(response => response.json())
     .then(veriler => {
       gereken_otobusB = veriler[0].gereken_otobus_sayisi;
@@ -25,7 +25,7 @@ function ger_otobusB() {
 function olusturGrafik() {
   const hat_id = document.getElementById('hat_id').value;
   const sampleData = {
-    labels: ['Gereken Otobüs Sayısı', 'Gereken Durak Sayısı', 'Durak Maliyeti', 'Otobüs Maliyeti'],
+    labels: ['Gereken Otobüs Sayısı', 'Gereken Durak Sayısı', 'Durak Maliyeti(Bin TL)', 'Otobüs Maliyeti(Mn TL)'],
     datasets: [
       {
         label: `Hat Bilgileri`,
@@ -37,7 +37,7 @@ function olusturGrafik() {
         ],
         borderColor: 'rgb(0,0,0)',
         borderWidth: 2,
-        data: [gereken_otobus, 19, 1, 5],
+        data: [gereken_otobus, 19, 9,gereken_otobus*5],
       },
     ],
   };
@@ -60,7 +60,7 @@ function olusturGrafik() {
           },
           y: {
             beginAtZero: true,
-            max: 30,
+            max: 50,
             stepSize: 2, // Set the step size to 2
           },
         },
@@ -82,7 +82,7 @@ function olusturGrafik() {
 function olusturGrafikB() {
   const hat_id = document.getElementById('hat_id').value;
   const sampleData = {
-    labels: ['Gereken Otobüs Sayısı', 'Gereken Durak Sayısı', 'Durak Maliyeti', 'Otobüs Maliyeti'],
+    labels: ['Gereken Otobüs Sayısı', 'Gereken Durak Sayısı', 'Durak Maliyeti(Bin TL)', 'Otobüs Maliyeti(Mn TL)'],   
     datasets: [
       {
         label: `Hat Bilgileri`,
@@ -94,7 +94,7 @@ function olusturGrafikB() {
         ],
         borderColor: 'rgb(0,0,0)',
         borderWidth: 2,
-        data: [gereken_otobusB, 8, 6, 5],
+        data: [gereken_otobusB, 8, 6, gereken_otobusB*5],
       },
     ],
   };
@@ -111,13 +111,15 @@ function olusturGrafikB() {
       type: 'bar',
       data: sampleData,
       options: {
+        // maintainAspectRatio: false,
+        // responsive:true,
         scales: {
           x: {
             stacked: true,
           },
           y: {
             beginAtZero: true,
-            max: 30,
+            max: 50,
             stepSize: 2, // Set the step size to 2
           },
         },

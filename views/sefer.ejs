@@ -25,9 +25,11 @@
         <div class="sefer-form">
             <form id="addSeferForm">
                 <h6>Sefer Saati Ekle</h6>
-                <input class="sefer-input" type="text" id="hatNoAdd" name="hatNoAdd" placeholder="Hat No" required>
-                <input class="sefer-input" type="text" id="gidisSaat" name="gidisSaat" placeholder="Gidiş Saati" required>
-                <input class="sefer-input" type="text" id="donusSaat" name="donusSaat" placeholder="Dönüş Saati" required>
+                <input class="sefer-input" type="number" id="hatNoAdd" name="hatNoAdd" placeholder="Hat No" required>
+                <label for="gidisSaat">Gidiş Saati:</label>
+                <input class="sefer-input" type="time" id="gidisSaat" name="gidisSaat" required>
+                <label for="donusSaat">Dönüş Saati</label>
+                <input class="sefer-input" type="time" id="donusSaat" name="donusSaat" required>
                 <button class="sefer-button" type="button" onclick="addSeferSaat()">Ekle</button>
             </form>
         </div>
@@ -43,10 +45,7 @@
         </table>
         <div class="sefer-tablo">
             <table class="sefer-table">
-
-                <tbody id="seferSaatleriBody">
-                    <!-- Tablo içeriği buraya eklenecek -->
-                </tbody>
+                <tbody id="seferSaatleriBody"></tbody>
             </table>
         </div>
     </div>
@@ -73,13 +72,13 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="kullanici">
                     <span class="icon"><ion-icon name="person-add"></ion-icon></span>
                     <span class="title">Kullanıcılar</span>
                 </a>
             </li>
             <li>
-                <a href="/">
+                <a href="/login">
                     <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
                     <span class="title">Çıkış</span>
                 </a>
@@ -97,7 +96,8 @@
             navigation.classList.toggle('active')
         }
     </script>
-    <script>
+    <script src="/js/sefer.js"></script>
+    <!-- <script>
         function searchSeferSaatleri() {
             const hatNo = document.getElementById('hatNo').value;
             fetch(`/api/sefer_saat_getir/${hatNo}`)
@@ -175,7 +175,7 @@
                 })
                 .catch(error => console.error('Hata:', error));
         }
-    </script>
+    </script> -->
 </body>
 
 </html>
