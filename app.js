@@ -16,8 +16,6 @@ app.use(express.static('views'));
 app.get("/login", (req, res) => {
     res.render("login.ejs", { errorMessage: ''});
 })
-
-
 // Ana sayfa
 app.get("/anasayfa", (req, res) => {
     durak_sayisi((veriler) => {

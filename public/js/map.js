@@ -6,7 +6,81 @@ function harita_olustur(){
 harita_olustur();
 
 // renkler
-const renkler = ['Red', 'Blue', 'Green', 'Yellow', 'Orange', 'Black', 'Brown', 'Cyan', 'Forest'];
+const renkler = [
+  "#8B4513", //
+  "#000000", // Siyah
+  "#FF0000", // Kırmızı
+  "#00FF00", // Yeşil
+  "#0000FF", // Mavi
+  "#FFFF00", // Sarı
+  "#FFA500", // Turuncu
+  "#800080", // Mor
+  "#008080", // Pembe
+  "#808080"  // Gri
+];
+
+function yerEkle(enlem, boylam, yerAdi, iconUrl) {
+  var custom_icon = L.icon({
+    iconUrl: iconUrl,
+    iconSize: [30, 25],
+    iconAnchor: [15, 30],
+    popupAnchor: [0, -30]
+  });
+
+  const marker = L.marker([enlem, boylam], { icon: custom_icon }).addTo(map);
+  marker.bindPopup(yerAdi).openPopup();
+}
+
+// Hastane bilgileri
+const hastaneBilgileri = [
+  { enlem:  38.4562, boylam:27.2101, adi: 'Ege Üniversitesi Hastanesi', iconUrl: '/img/hospital.png' },
+  { enlem: 38.3948, boylam: 27.0334, adi: 'Dokuz Eylül Üniversitesi Hastanesi', iconUrl: '/img/hospital.png' },
+  { enlem: 38.422340, boylam: 27.165012, adi: 'Tepecik Eğitim ve Araştırma Hastanesi', iconUrl: '/img/hospital.png' },
+  { enlem: 38.2940, boylam: 27.1042, adi: 'İzmir Şehir Hastanesi', iconUrl: '/img/hospital.png' },
+  { enlem: 38.3978, boylam:27.1038, adi: 'Katip Çelebi Üniversitesi Atatürk Eğitim ve Araştırma Hastanesi', iconUrl: '/img/hospital.png' },
+  { enlem: 38.432503, boylam: 27.149294, adi: 'Ege Sağlık Hastanesi', iconUrl: '/img/hospital.png' },
+  { enlem:  38.489300, boylam:27.052500, adi: 'Kent Hastanesi', iconUrl: '/img/hospital.png' },
+  { enlem: 38.4176, boylam: 27.1289, adi: 'Kardeşkent Hastanesi', iconUrl: '/img/hospital.png' },
+  { enlem: 38.385372, boylam: 27.165920, adi: 'Buca Seyfi Demirsoy Hastanesi', iconUrl: '/img/hospital.png' },
+  { enlem: 38.4167, boylam: 27.1423, adi: 'Bornova Şehir Hastanesi', iconUrl: '/img/hospital.png' },
+  { enlem: 38.434101, boylam: 27.143169, adi: 'Alsancak Devlet Hastanesi', iconUrl: '/img/hospital.png' },
+  { enlem: 38.394291, boylam: 27.006939, adi: 'Narlidere Devlet Hastanesi', iconUrl: '/img/hospital.png' },
+  { enlem: 40.985737 , boylam: 29.057775, adi: 'Göztepe Hastanesi', iconUrl: '/img/hospital.png' },
+  { enlem: 38.2940, boylam: 27.1042, adi: 'Bayraklı Devlet Hastanesi', iconUrl: '/img/hospital.png' },
+  { enlem: 38.398346, boylam: 27.126347, adi: 'Karabağlar Devlet Hastanesi', iconUrl: '/img/hospital.png' },
+  // Yeni hastaneler buraya eklenebilir
+];
+
+// Üniversite bilgileri
+const universiteBilgileri = [
+  { enlem: 38.385330, boylam: 27.181267, adi: 'DEÜ İİBF', iconUrl: '/img/university.png' },
+  { enlem: 38.386284, boylam: 27.170511, adi: 'DEÜ EĞİTİM', iconUrl: '/img/university.png' },
+  { enlem: 38.3716, boylam: 27.197, adi: 'DEÜ TINAZTEPE', iconUrl: '/img/university.png' },
+  { enlem: 38.388294, boylam: 27.045057, adi: 'İEÜ', iconUrl: '/img/university.png' },
+  { enlem: 38.511673, boylam: 27.031418, adi: 'İKÇÜ', iconUrl: '/img/university.png' },
+  { enlem: 38.581978, boylam: 26.964029, adi: 'İZBÜ', iconUrl: '/img/university.png' },
+  { enlem: 38.4575, boylam: 27.2298, adi: 'EÜ', iconUrl: '/img/university.png' },
+];
+
+// Her bir hastane bilgisini haritaya ekleyin
+hastaneBilgileri.forEach(hastane => {
+  yerEkle(hastane.enlem, hastane.boylam, hastane.adi, hastane.iconUrl);
+});
+
+// Her bir üniversite bilgisini haritaya ekleyin
+universiteBilgileri.forEach(universite => {
+  yerEkle(universite.enlem, universite.boylam, universite.adi, universite.iconUrl);
+});
+
+
+function temizleDuraklar() {
+  map.eachLayer(layer => {
+    if (layer instanceof L.Marker && layer.options.icon.options.iconUrl === '/img/eshot.png') {
+      map.removeLayer(layer);
+    }
+  });
+}
+
 
 function haritayiGoster() {
   const randomIndex = Math.floor(Math.random() * renkler.length);
@@ -24,6 +98,12 @@ function haritayiGoster() {
 }
 
 function durakGetir() {
+  // map.eachLayer(layer => {
+  //   if (layer instanceof L.Marker || layer instanceof L.Popup) {
+  //     layer.remove();
+  //   }
+  // });
+  temizleDuraklar()
   var eshot_icon = L.icon({
     iconUrl: '/img/eshot.png',
     iconSize: [15,15],  // İkon boyutu
@@ -92,7 +172,7 @@ function noktaEkle() {
   // Yeni bir marker oluşturun
   var marker = L.marker(center, {
     draggable: true,
-    icon: yeni_durak
+    // icon: yeni_durak
   }).addTo(map);
 
   marker.bindPopup(`${durak_id}-${durak_adi}`).openPopup();
@@ -240,17 +320,60 @@ function metro_getir(){
     });
 }
 
+// function tum_hatlar() {
+//   fetch(`api/tum_guzergah`)
+//     .then(response => response.json())
+//     .then(veriler => {
+//       // Hat numarasına göre konumları grupla
+//       const gruplanmisKonumlar = gruplaKonumlar(veriler);
+
+//       // Gruplanmış konumlar üzerinde döngü yaparak çizgileri oluştur
+//       gruplanmisKonumlar.forEach(grup => {
+//         const polyline = L.polyline(grup.map(konum => [konum.enlem, konum.boylam]), { color: "blue" ,weight:5}).addTo(map);
+
+//         // Çizgiye tıklandığında hat numarasını gösteren etiket ekle
+//         polyline.on('click', function (event) {
+//           const hatNo = grup[0].hat_no; // Hat numarasını ilk konumdan alabiliriz
+//           const popup = L.popup().setLatLng(event.latlng).setContent(`Hat No: ${hatNo}`).openOn(map);
+//         });
+
+//         // Harita görünen alanı polyline'a sığacak şekilde ayarla
+//         map.fitBounds(polyline.getBounds());
+//       });
+//     })
+//     .catch(error => console.error('Hata:', error));
+// }
+
+// function gruplaKonumlar(veriler) {
+//   const gruplar = {};
+//   veriler.forEach(konum => {
+//     const hatNo = konum.hat_no;
+
+//     if (!gruplar[hatNo]) {
+//       gruplar[hatNo] = [];
+//     }
+
+//     gruplar[hatNo].push(konum);
+//   });
+
+//   return Object.values(gruplar);
+// }
+
 function tum_hatlar() {
-  const randomIndex = Math.floor(Math.random() * renkler.length);
   fetch(`api/tum_guzergah`)
     .then(response => response.json())
     .then(veriler => {
       // Hat numarasına göre konumları grupla
       const gruplanmisKonumlar = gruplaKonumlar(veriler);
 
+      // Her hat için farklı renkleri içeren bir dizi
+      const renkler = ["blue","black"];
+
       // Gruplanmış konumlar üzerinde döngü yaparak çizgileri oluştur
-      gruplanmisKonumlar.forEach(grup => {
-        const polyline = L.polyline(grup.map(konum => [konum.enlem, konum.boylam]), { color: "purple" ,weight:5}).addTo(map);
+      gruplanmisKonumlar.forEach((grup, index) => {
+        const renk = renkler[index % renkler.length]; // Renk dizisinde dolaş
+
+        const polyline = L.polyline(grup.map(konum => [konum.enlem, konum.boylam]), { color: renk, weight: 5 }).addTo(map);
 
         // Çizgiye tıklandığında hat numarasını gösteren etiket ekle
         polyline.on('click', function (event) {

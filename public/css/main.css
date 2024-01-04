@@ -30,33 +30,6 @@ body {
 }
 
 
-/* .ara {
-    display: flex;
-    flex-direction: column;
-    width: 100px;
-    margin-left: 130px;
-    margin-top: 10px;
-    gap: 3px;
-}
-
-.hat_ekle {
-    display: flex;
-    flex-direction: column;
-    width: 100px;
-    margin-left: 130px;
-    margin-top: 10px;
-    gap: 3px;
-}
-
-.durak_ekle {
-    display: flex;
-    flex-direction: column;
-    width: 100px;
-    margin-left: 130px;
-    margin-top: 10px;
-    gap: 3px;
-} */
-/* Buton div'i stil ayarları */
 .btn {
     display: flex;
     gap: 10px;
@@ -118,11 +91,11 @@ body {
 }
 
 .kart {
-    width: 300px;
+    width: 220px;
     height: 100px;
     display: flex;
     position:relative;
-    margin-left: 100px;
+    margin-left: 110px;
     gap: 10px;
     text-align: center;
 }
