@@ -45,9 +45,8 @@ const hastaneBilgileri = [
   { enlem: 38.4167, boylam: 27.1423, adi: 'Bornova Şehir Hastanesi', iconUrl: '/img/hospital.png' },
   { enlem: 38.434101, boylam: 27.143169, adi: 'Alsancak Devlet Hastanesi', iconUrl: '/img/hospital.png' },
   { enlem: 38.394291, boylam: 27.006939, adi: 'Narlidere Devlet Hastanesi', iconUrl: '/img/hospital.png' },
-  { enlem: 40.985737 , boylam: 29.057775, adi: 'Göztepe Hastanesi', iconUrl: '/img/hospital.png' },
   { enlem: 38.2940, boylam: 27.1042, adi: 'Bayraklı Devlet Hastanesi', iconUrl: '/img/hospital.png' },
-  { enlem: 38.398346, boylam: 27.126347, adi: 'Karabağlar Devlet Hastanesi', iconUrl: '/img/hospital.png' },
+  { enlem: 38.398346, boylam: 27.126347, adi: 'Karabağlar Devlet Hastanesi', iconUrl: '/img/hospital.png' }
   // Yeni hastaneler buraya eklenebilir
 ];
 
@@ -60,6 +59,9 @@ const universiteBilgileri = [
   { enlem: 38.511673, boylam: 27.031418, adi: 'İKÇÜ', iconUrl: '/img/university.png' },
   { enlem: 38.581978, boylam: 26.964029, adi: 'İZBÜ', iconUrl: '/img/university.png' },
   { enlem: 38.4575, boylam: 27.2298, adi: 'EÜ', iconUrl: '/img/university.png' },
+  { enlem: 38.393539, boylam: 27.073681, adi: 'İzmir Demokrasi Üniversitesi', iconUrl: '/img/university.png' },
+  { enlem: 38.581978, boylam:26.964029, adi: 'Bakırçay Üniversitesi', iconUrl: '/img/university.png' }
+  
 ];
 
 // Her bir hastane bilgisini haritaya ekleyin

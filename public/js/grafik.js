@@ -30,7 +30,9 @@ function olusturGrafik() {
       durak_sayisi = veriler[0].durak_sayisi;
 
       const sampleData = {
-        labels: ['Gereken Otobüs Sayısı', 'Gereken Durak Sayısı', 'Durak Maliyeti(Bin TL)', 'Otobüs Maliyeti(Mn TL)'],
+        labels: [['Gereken','Otobüs',`${gereken_otobus}`], ['Gereken','Durak',`${durak_sayisi}`],
+        ['Durak','Maliyeti',`${durak_sayisi*3} Bin TL`], ['Otobüs' ,'Maliyeti',`${gereken_otobus*5} Mn TL`],
+        ['Hat','Uzunluğu',`${(durak_sayisi-1)*0.5} Km`]],
         datasets: [
           {
             label: `Hat Bilgileri`,
@@ -39,10 +41,11 @@ function olusturGrafik() {
               'rgb(18, 175, 7)',
               'rgb(127,0,0)',
               'rgb(153, 102, 255)',
+              'rgb(54, 54, 54)'
             ],
             borderColor: 'rgb(0,0,0)',
             borderWidth: 2,
-            data: [gereken_otobus, durak_sayisi,durak_sayisi*10, gereken_otobus * 5],
+            data: [gereken_otobus, durak_sayisi,durak_sayisi*3, gereken_otobus * 5,(durak_sayisi-1)*0.5],
           },
         ],
       };
@@ -62,11 +65,31 @@ function olusturGrafik() {
             scales: {
               x: {
                 stacked: true,
+                grid: {
+                  color: 'rgba(0, 0, 0)', // x eksenindeki ızgara rengi
+                  borderWidth: 2 // x eksenindeki ızgara kalınlığı
+              },
+              ticks: {
+                color: 'black', // x eksenindeki etiketlerin rengi
+                font: {
+                    size: 14 // x eksenindeki etiketlerin font boyutu
+                }
+            }              
               },
               y: {
                 beginAtZero: true,
-                max: 50,
+                max: 100,
                 stepSize: 2, // Set the step size to 2
+                grid: {
+                  color: 'rgba(0, 0, 0)', // y eksenindeki ızgara rengi
+                  borderWidth: 1 // y eksenindeki ızgara kalınlığı
+              },
+              ticks: {
+                  color: 'blue', // y eksenindeki etiketlerin rengi
+                  font: {
+                      size: 13 // y eksenindeki etiketlerin font boyutu
+                  }
+              }
               },
             },
             plugins: {
@@ -94,7 +117,9 @@ function olusturGrafikB() {
       durak_sayisiB = veriler[0].durak_sayisi;
 
       const sampleData = {
-        labels: ['Gereken Otobüs Sayısı', 'Gereken Durak Sayısı', 'Durak Maliyeti(Bin TL)', 'Otobüs Maliyeti(Mn TL)'],
+        labels: [['Gereken','Otobüs',`${gereken_otobusB}`], ['Gereken','Durak',`${durak_sayisiB}`],
+        ['Durak','Maliyeti',`${durak_sayisiB*3} Bin TL`], ['Otobüs' ,'Maliyeti',`${gereken_otobusB*5} Mn TL`],
+        ['Hat','Uzunluğu',`${(durak_sayisiB-1)*0.5} Km`]],
         datasets: [
           {
             label: `Hat Bilgileri`,
@@ -103,10 +128,11 @@ function olusturGrafikB() {
               'rgb(18, 175, 7)',
               'rgb(127, 0, 0)',
               'rgb(153, 102, 255)',
+              'rgb(54, 54, 54)'
             ],
             borderColor: 'rgb(0,0,0)',
             borderWidth: 2,
-            data: [gereken_otobusB, durak_sayisiB, durak_sayisiB*10, gereken_otobusB * 5],
+            data: [gereken_otobusB, durak_sayisiB, durak_sayisiB*3, gereken_otobusB * 5,(durak_sayisiB-1)*0.5],
           },
         ],
       };
@@ -128,11 +154,31 @@ function olusturGrafikB() {
             scales: {
               x: {
                 stacked: true,
+                grid: {
+                  color: 'rgba(0, 0, 0)', // x eksenindeki ızgara rengi
+                  borderWidth: 2 // x eksenindeki ızgara kalınlığı
+              },
+              ticks: {
+                color: 'black', // x eksenindeki etiketlerin rengi
+                font: {
+                    size: 14 // x eksenindeki etiketlerin font boyutu
+                }
+            }              
               },
               y: {
                 beginAtZero: true,
-                max: 50,
+                max: 100,
                 stepSize: 2, // Set the step size to 2
+                grid: {
+                  color: 'rgba(0, 0, 0)', // y eksenindeki ızgara rengi
+                  borderWidth: 1 // y eksenindeki ızgara kalınlığı
+              },
+              ticks: {
+                  color: 'blue', // y eksenindeki etiketlerin rengi
+                  font: {
+                      size: 13 // y eksenindeki etiketlerin font boyutu
+                  }
+              }
               },
             },
             plugins: {
