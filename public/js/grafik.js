@@ -30,12 +30,12 @@ function olusturGrafik() {
       durak_sayisi = veriler[0].durak_sayisi;
 
       const sampleData = {
-        labels: [['Gereken','Otobüs',`${gereken_otobus}`], ['Gereken','Durak',`${durak_sayisi}`],
-        ['Durak','Maliyeti',`${durak_sayisi*3} Bin TL`], ['Otobüs' ,'Maliyeti',`${gereken_otobus*5} Mn TL`],
-        ['Hat','Uzunluğu',`${(durak_sayisi-1)*0.5} Km`]],
+        labels: [[`${gereken_otobus}`,'Gereken','Otobüs',"Sayısı"], [`${durak_sayisi}`,'Gereken','Durak',"Sayısı"],
+        [`${durak_sayisi*3} Bin TL`,'Durak','Maliyeti'], [`${gereken_otobus*5} Mn TL`,'Otobüs' ,'Maliyeti'],
+        [`${(durak_sayisi-1)*0.5} Km`,'Hat','Uzunluğu']],
         datasets: [
           {
-            label: `Hat Bilgileri`,
+            label: `${hat_id} Numaralı Hat Bilgileri`,
             backgroundColor: [
               'rgb(15, 6, 170)',
               'rgb(18, 175, 7)',
@@ -117,13 +117,13 @@ function olusturGrafikB() {
       durak_sayisiB = veriler[0].durak_sayisi;
 
       const sampleData = {
-        labels: [['Gereken','Otobüs',`${gereken_otobusB}`], ['Gereken','Durak',`${durak_sayisiB}`],
-        ['Durak','Maliyeti',`${durak_sayisiB*3} Bin TL`], ['Otobüs' ,'Maliyeti',`${gereken_otobusB*5} Mn TL`],
-        ['Hat','Uzunluğu',`${(durak_sayisiB-1)*0.5} Km`]],
+        labels: [[`${gereken_otobusB}`,'Gereken','Otobüs',"Sayısı"], [`${durak_sayisiB}`,'Gereken','Durak',"Sayısı"],
+        [`${durak_sayisiB*3} Bin TL`,'Durak','Maliyeti'], [`${gereken_otobusB*5} Mn TL`,'Otobüs' ,'Maliyeti'],
+        [`${(durak_sayisiB-1)*0.5} Km`,'Hat','Uzunluğu']],
         datasets: [
           {
-            label: `Hat Bilgileri`,
-            backgroundColor: [
+            label: `${hat_id} Numaralı Hat Bilgileri`,
+            backgroundColor: [              
               'rgb(0, 0, 170)',
               'rgb(18, 175, 7)',
               'rgb(127, 0, 0)',

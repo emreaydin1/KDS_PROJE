@@ -51,8 +51,7 @@ const hastaneBilgileri = [
 ];
 
 // Üniversite bilgileri
-const universiteBilgileri = [
-  { enlem: 38.385330, boylam: 27.181267, adi: 'DEÜ İİBF', iconUrl: '/img/university.png' },
+const universiteBilgileri = [ 
   { enlem: 38.386284, boylam: 27.170511, adi: 'DEÜ EĞİTİM', iconUrl: '/img/university.png' },
   { enlem: 38.3716, boylam: 27.197, adi: 'DEÜ TINAZTEPE', iconUrl: '/img/university.png' },
   { enlem: 38.388294, boylam: 27.045057, adi: 'İEÜ', iconUrl: '/img/university.png' },
@@ -60,7 +59,8 @@ const universiteBilgileri = [
   { enlem: 38.581978, boylam: 26.964029, adi: 'İZBÜ', iconUrl: '/img/university.png' },
   { enlem: 38.4575, boylam: 27.2298, adi: 'EÜ', iconUrl: '/img/university.png' },
   { enlem: 38.393539, boylam: 27.073681, adi: 'İzmir Demokrasi Üniversitesi', iconUrl: '/img/university.png' },
-  { enlem: 38.581978, boylam:26.964029, adi: 'Bakırçay Üniversitesi', iconUrl: '/img/university.png' }
+  { enlem: 38.581978, boylam:26.964029, adi: 'Bakırçay Üniversitesi', iconUrl: '/img/university.png' },
+  { enlem: 38.385330, boylam: 27.181267, adi: 'DEÜ İİBF', iconUrl: '/img/university.png' }
   
 ];
 
